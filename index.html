@@ -1,0 +1,385 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Client Support Portal</title>
+
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: Arial, sans-serif;
+    }
+
+    body {
+      min-height: 100vh;
+      background: linear-gradient(135deg, #101827, #172c49);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 20px;
+      color: #172033;
+    }
+
+    .support-card {
+      width: 100%;
+      max-width: 480px;
+      background: #fff;
+      border-radius: 18px;
+      padding: 35px;
+      box-shadow: 0 20px 60px rgba(0, 0, 0, .25);
+    }
+
+    .brand {
+      text-align: center;
+      margin-bottom: 28px;
+    }
+
+    .brand-icon {
+      width: 58px;
+      height: 58px;
+      margin: 0 auto 15px;
+      border-radius: 16px;
+      background: #e8efff;
+      color: #315de8;
+      display: grid;
+      place-items: center;
+      font-size: 28px;
+    }
+
+    h1 {
+      font-size: 26px;
+      margin-bottom: 9px;
+    }
+
+    .subtitle {
+      font-size: 14px;
+      color: #687386;
+      line-height: 1.6;
+    }
+
+    .form-group {
+      margin-bottom: 18px;
+    }
+
+    label {
+      display: block;
+      font-size: 14px;
+      font-weight: 600;
+      margin-bottom: 8px;
+    }
+
+    input, select, textarea {
+      width: 100%;
+      padding: 13px 14px;
+      border: 1px solid #d8deea;
+      border-radius: 9px;
+      font-size: 14px;
+      outline: none;
+      background: #fff;
+      color: #172033;
+    }
+
+    input:focus, select:focus, textarea:focus {
+      border-color: #315de8;
+      box-shadow: 0 0 0 3px rgba(49, 93, 232, .1);
+    }
+
+    textarea {
+      min-height: 110px;
+      resize: vertical;
+    }
+
+    .primary-btn {
+      width: 100%;
+      padding: 14px;
+      border: none;
+      border-radius: 9px;
+      background: #315de8;
+      color: white;
+      font-size: 15px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: .2s;
+    }
+
+    .primary-btn:hover {
+      background: #2348c4;
+    }
+
+    .secondary-btn {
+      background: #e9eef9;
+      color: #2348c4;
+      margin-top: 10px;
+    }
+
+    .secondary-btn:hover {
+      background: #dce5fb;
+    }
+
+    .hidden {
+      display: none;
+    }
+
+    .message {
+      margin-bottom: 16px;
+      padding: 12px;
+      border-radius: 8px;
+      background: #fff3e5;
+      color: #92400e;
+      font-size: 13px;
+      line-height: 1.5;
+    }
+
+    .secure-note {
+      margin-top: 20px;
+      text-align: center;
+      font-size: 12px;
+      color: #7a8495;
+    }
+
+    .back-btn {
+      border: none;
+      background: none;
+      color: #315de8;
+      cursor: pointer;
+      margin-bottom: 20px;
+      font-size: 14px;
+    }
+
+    @media (max-width: 480px) {
+      .support-card {
+        padding: 25px 20px;
+      }
+
+      h1 {
+        font-size: 23px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <main class="support-card">
+
+    <div class="brand">
+      <div class="brand-icon">✦</div>
+      <h1 id="pageTitle">Client Login</h1>
+      <p class="subtitle" id="pageSubtitle">
+        Sign in to your account to get technical support.
+      </p>
+    </div>
+
+    <!-- LOGIN FORM -->
+    <form id="loginForm">
+
+      <div class="form-group">
+        <label for="email">Email Address</label>
+        <input
+          type="email"
+          id="email"
+          placeholder="client@example.com"
+          autocomplete="username"
+          required
+        >
+      </div>
+
+      <div class="form-group">
+        <label for="password">Password</label>
+        <input
+          type="password"
+          id="password"
+          placeholder="Enter your password"
+          autocomplete="current-password"
+          required
+        >
+      </div>
+
+      <div id="loginMessage" class="message hidden"></div>
+
+      <button type="submit" class="primary-btn">
+        Sign In
+      </button>
+
+      <p class="secure-note">
+        Client Support Portal
+      </p>
+    </form>
+
+    <!-- ISSUE FORM -->
+    <form id="issueForm" class="hidden">
+
+      <button type="button" class="back-btn" id="backBtn">
+        ← Back to login
+      </button>
+
+      <div class="form-group">
+        <label for="clientName">Your Name</label>
+        <input
+          type="text"
+          id="clientName"
+          placeholder="Enter your name"
+          required
+        >
+      </div>
+
+      <div class="form-group">
+        <label for="issueType">Issue Category</label>
+        <select id="issueType" required>
+          <option value="">Select an issue</option>
+          <option>Login / Account Problem</option>
+          <option>Software Not Working</option>
+          <option>Error or Bug</option>
+          <option>Payment Issue</option>
+          <option>Installation Problem</option>
+          <option>Other</option>
+        </select>
+      </div>
+
+      <div class="form-group">
+        <label for="issueDescription">Describe Your Issue</label>
+        <textarea
+          id="issueDescription"
+          placeholder="Explain what happened and what you need help with..."
+          required
+        ></textarea>
+      </div>
+
+      <button type="submit" class="primary-btn">
+        Start Live Chat
+      </button>
+
+      <button type="button" class="primary-btn secondary-btn"
+        id="logoutBtn">
+        Logout
+      </button>
+
+      <p class="secure-note">
+        Our support team is here to help.
+      </p>
+    </form>
+
+  </main>
+
+  <!-- SMARTSUPP LIVE CHAT -->
+  <script>
+    var _smartsupp = window._smartsupp || {};
+    _smartsupp.key = 'cbbd195f05137b34dd908aa18faa7514206c9033';
+    window._smartsupp = _smartsupp;
+
+    window.smartsupp || (function(d) {
+      var s, c, o = window.smartsupp = function() {
+        o._.push(arguments);
+      };
+      o._ = [];
+      s = d.getElementsByTagName('script')[0];
+      c = d.createElement('script');
+      c.type = 'text/javascript';
+      c.charset = 'utf-8';
+      c.async = true;
+      c.src = 'https://www.smartsuppchat.com/loader.js?';
+      s.parentNode.insertBefore(c, s);
+    })(document);
+  </script>
+
+  <noscript>
+    Powered by
+    <a href="https://www.smartsupp.com">Smartsupp</a>
+  </noscript>
+
+  <script>
+    const loginForm = document.getElementById('loginForm');
+    const issueForm = document.getElementById('issueForm');
+    const pageTitle = document.getElementById('pageTitle');
+    const pageSubtitle = document.getElementById('pageSubtitle');
+    const loginMessage = document.getElementById('loginMessage');
+
+    let clientEmail = '';
+
+    // DEMO ONLY: This is not real authentication.
+    // Connect a secure backend before using with actual clients.
+    loginForm.addEventListener('submit', function(event) {
+      event.preventDefault();
+
+      clientEmail = document.getElementById('email').value.trim();
+
+      const password = document.getElementById('password').value;
+
+      if (!clientEmail || !password) {
+        loginMessage.textContent = 'Please enter your email and password.';
+        loginMessage.classList.remove('hidden');
+        return;
+      }
+
+      // Demo transition only; credentials are NOT verified.
+      loginMessage.classList.add('hidden');
+      loginForm.classList.add('hidden');
+      issueForm.classList.remove('hidden');
+
+      pageTitle.textContent = 'Report an Issue';
+      pageSubtitle.textContent =
+        'Tell us what went wrong and connect with our support team.';
+
+      document.getElementById('clientName').focus();
+    });
+
+    document.getElementById('backBtn').addEventListener('click', function() {
+      issueForm.classList.add('hidden');
+      loginForm.classList.remove('hidden');
+
+      pageTitle.textContent = 'Client Login';
+      pageSubtitle.textContent =
+        'Sign in to your account to get technical support.';
+    });
+
+    document.getElementById('logoutBtn').addEventListener('click', function() {
+      clientEmail = '';
+      loginForm.reset();
+      issueForm.reset();
+
+      issueForm.classList.add('hidden');
+      loginForm.classList.remove('hidden');
+
+      pageTitle.textContent = 'Client Login';
+      pageSubtitle.textContent =
+        'Sign in to your account to get technical support.';
+    });
+
+    issueForm.addEventListener('submit', function(event) {
+      event.preventDefault();
+
+      const name = document.getElementById('clientName').value.trim();
+      const category = document.getElementById('issueType').value;
+      const description =
+        document.getElementById('issueDescription').value.trim();
+
+      if (!name || !category || !description) {
+        return;
+      }
+
+      // Set the visitor details in Smartsupp.
+      if (typeof window.smartsupp === 'function') {
+        window.smartsupp('name', name);
+        window.smartsupp('email', clientEmail);
+
+        // Open the chat widget.
+        window.smartsupp('chat:open');
+      }
+
+      // The issue is collected locally in this demo.
+      // Connect your backend/ticket system to save it.
+      alert(
+        'Your issue details are ready. Please send the following ' +
+        'information to the support agent in the live chat:\n\n' +
+        'Category: ' + category + '\n' +
+        'Issue: ' + description
+      );
+    });
+  </script>
+
+</body>
+</html>
